@@ -6,4 +6,5 @@ package com.salesforce.automation.servicelayer.config;
  */
 public interface FrameworkConstants {
     public final static String UI_TEST_URL = "https://test.salesforce.com";
+    public final static String IS_PLATFORM = "lightning";
 }

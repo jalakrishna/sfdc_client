@@ -21,7 +21,7 @@ public class HomePage {
     @FindBy(linkText = "Switch to Salesforce Classic")
     private static WebElement SwitchToClassicViewLink;
 
-    @FindBy(xpath = ".//input[@placeholder='Find an app or item']")
+    @FindBy(xpath = "//input[@placeholder='Find an app or item']")
     private static WebElement HomeOpenAnyTab;
     
     public HomePage(WebDriver driver) {

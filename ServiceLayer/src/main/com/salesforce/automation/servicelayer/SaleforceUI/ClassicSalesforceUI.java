@@ -7,7 +7,10 @@ import com.salesforce.automation.servicelayer.utils.UIUtilities;
 
 public class ClassicSalesforceUI {
 
-	/**    
+	/**  
+	 * @author trungta
+	 * @param tabName -> Name of item to search for
+	 * @param driver ->  Webdriver for that instance
 	 * Open any tab in sandbox
 	 * This method clicks on + sign in tabs and will open a specified tab.
 	 * @throws Exception

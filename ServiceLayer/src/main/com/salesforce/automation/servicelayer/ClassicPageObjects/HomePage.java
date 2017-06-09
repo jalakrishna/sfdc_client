@@ -10,14 +10,14 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
 		private WebDriver driver;
-     
+		
+		private static final String HOME_OPEN_ANY_TAB = "//a[text()='@TABNAME' and img[contains(@title,'@TABNAME')]]";
+		
 		@FindBy(id = "userNavLabel")
 		private WebElement UserName;
 
 		@FindBy(linkText = "Switch to Lightning Experience")
 		private WebElement SwitchToLightningViewLink;
-    
-	    private static final String HOME_OPEN_ANY_TAB = "//a[text()='@TABNAME' and img[contains(@title,'@TABNAME')]]";
 	    
 	    @FindBy(xpath = HOME_OPEN_ANY_TAB)
 		private WebElement homeOpenAnyTab;

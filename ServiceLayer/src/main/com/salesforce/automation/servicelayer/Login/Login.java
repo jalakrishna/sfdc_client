@@ -30,10 +30,10 @@ public class Login extends Base{
                 System.out.println("Page title is: " + driver.getTitle());
                 System.out.println("Enter username");
                 SFLogin sfLogin = SFLogin.init(driver);
-                sfLogin.getUserName().sendKeys("rtigulla@salesforce.com.csgqa1");
+                sfLogin.getUserName().sendKeys("");
                 Thread.sleep(4000);
                 System.out.println("Enter password");
-                sfLogin.getPassword().sendKeys("Work@sfdc009");
+                sfLogin.getPassword().sendKeys("");
                 Thread.sleep(4000);
                 sfLogin.getLoginBtn().click();
                 Thread.sleep(4000);

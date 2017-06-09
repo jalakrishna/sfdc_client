@@ -30,10 +30,10 @@ public class Login extends Base{
                 System.out.println("Page title is: " + driver.getTitle());
                 System.out.println("Enter username");
                 SFLogin sfLogin = SFLogin.init(driver);
-                sfLogin.getUserName().sendKeys("");
+                sfLogin.getUserName().sendKeys("rtigulla@salesforce.com.csgqa1");
                 Thread.sleep(4000);
                 System.out.println("Enter password");
-                sfLogin.getPassword().sendKeys("");
+                sfLogin.getPassword().sendKeys("Work@sfdc009");
                 Thread.sleep(4000);
                 sfLogin.getLoginBtn().click();
                 Thread.sleep(4000);
@@ -47,6 +47,22 @@ public class Login extends Base{
         }
         return driver;
 
+    }
+
+    public static WebDriver LoginAsTestUser(WebDriver driver, String userId){
+        try{
+            if (null != driver){
+                switch (FrameworkConstants.IS_PLATFORM){
+                    case "classic": ClassicLogin.LoginAsSpecifcUser(driver,userId);
+                                    break;
+                    case "lightning": LightningLogin.LoginAsSpecifcUser(driver,userId);
+                                    break;
+                }
+            }
+        }catch (Exception ex){
+
+        }
+        return driver;
     }
 
 }

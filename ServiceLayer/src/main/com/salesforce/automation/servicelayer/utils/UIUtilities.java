@@ -1,6 +1,5 @@
 package com.salesforce.automation.servicelayer.utils;
 
-import com.salesforce.automation.servicelayer.ClassicPageObjects.Page;
 import com.salesforce.automation.servicelayer.Exception.NonSupportedPlatformException;
 import com.salesforce.automation.servicelayer.config.SupportedPlatforms;
 import org.openqa.selenium.NoSuchElementException;

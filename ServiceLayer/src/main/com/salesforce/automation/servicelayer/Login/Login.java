@@ -49,4 +49,20 @@ public class Login extends Base{
 
     }
 
+    public static WebDriver LoginAsTestUser(WebDriver driver, String userId){
+        try{
+            if (null != driver){
+                switch (FrameworkConstants.IS_PLATFORM){
+                    case "classic": ClassicLogin.LoginAsSpecifcUser(driver,userId);
+                                    break;
+                    case "lightning": LightningLogin.LoginAsSpecifcUser(driver,userId);
+                                    break;
+                }
+            }
+        }catch (Exception ex){
+
+        }
+        return driver;
+    }
+
 }

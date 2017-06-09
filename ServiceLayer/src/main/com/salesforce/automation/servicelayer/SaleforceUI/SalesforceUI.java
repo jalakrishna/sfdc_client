@@ -7,7 +7,7 @@ import com.salesforce.automation.servicelayer.config.FrameworkConstants;
 public class SalesforceUI {
 	
 	public static WebDriver openTab(String tabName,WebDriver driver) throws Exception {		
-		try {
+		try { 
 			switch (FrameworkConstants.IS_PLATFORM) {
 			case "lightning" : 	LightningSalesforceUI.openTab(tabName, driver);
 								break;

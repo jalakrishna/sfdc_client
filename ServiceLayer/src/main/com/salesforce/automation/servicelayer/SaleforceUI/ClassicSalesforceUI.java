@@ -7,7 +7,7 @@ import com.salesforce.automation.servicelayer.utils.UIUtilities;
 
 public class ClassicSalesforceUI {
 
-	/**
+	/**    
 	 * Open any tab in sandbox
 	 * This method clicks on + sign in tabs and will open a specified tab.
 	 * @throws Exception

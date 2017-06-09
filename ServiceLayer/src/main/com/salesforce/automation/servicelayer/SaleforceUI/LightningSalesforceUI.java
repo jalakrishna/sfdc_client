@@ -7,7 +7,7 @@ import com.salesforce.automation.servicelayer.utils.UIUtilities;
 
 public class LightningSalesforceUI {
 
-	/**
+	/**     
 	 * Open any tab in sandbox
 	 * This method clicks on App Launcher icon in tabs and will open a specified tab.
 	 * @throws Exception

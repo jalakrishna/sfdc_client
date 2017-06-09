@@ -17,7 +17,7 @@ public class HomePage {
     
     @FindBy(xpath = "//img[@class='profileTrigger' and contains(@src,'profilephoto')]")
     private WebElement UserIcon;
-
+ 
     @FindBy(linkText = "Switch to Salesforce Classic")
     private static WebElement SwitchToClassicViewLink;
 

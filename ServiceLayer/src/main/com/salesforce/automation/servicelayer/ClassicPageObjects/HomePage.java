@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
 		private WebDriver driver;
-    
+     
 		@FindBy(id = "userNavLabel")
 		private WebElement UserName;
 

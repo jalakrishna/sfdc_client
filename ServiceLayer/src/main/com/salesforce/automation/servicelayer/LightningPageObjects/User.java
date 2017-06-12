@@ -1,7 +1,7 @@
 package com.salesforce.automation.servicelayer.LightningPageObjects;
 
 
-import com.salesforce.automation.servicelayer.ClassicPageObjects.Page;
+import com.salesforce.automation.servicelayer.LightningPageObjects.Page;
 import com.salesforce.automation.servicelayer.utils.UrlUtilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -51,6 +51,6 @@ public class User extends Page{
     public WebElement getUserLogin() {
         return userLogin;
     }
-
+ 
 
 }

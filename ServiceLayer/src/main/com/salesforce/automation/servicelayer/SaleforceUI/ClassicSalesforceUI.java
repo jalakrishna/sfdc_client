@@ -38,7 +38,7 @@ public class ClassicSalesforceUI {
 	 * @throws Exception
 	 */
 	public static void openDetailPage(String testUserId,WebDriver driver) throws Exception{
-		try{
+		try{ 
 			UIUtilities.SwitchToClassicView(driver);
 			Thread.sleep(8000);
 			Page.openPage(driver, testUserId);

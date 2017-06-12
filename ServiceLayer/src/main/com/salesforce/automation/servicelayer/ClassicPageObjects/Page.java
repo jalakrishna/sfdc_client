@@ -56,7 +56,7 @@ public class Page  {
 
     public WebElement getSwitchToLightningViewLink() {
         return SwitchToLightningViewLink;
-    }
+    }  
 
     public static Page openPage(WebDriver driver,String url) throws MalformedURLException {
         driver.get(UrlUtilities.getServerUrlIncludingProtocol(driver.getCurrentUrl()) + "/" + url);

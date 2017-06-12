@@ -14,7 +14,7 @@ public class SalesforceUI {
 	 * or lightning based on user choice
 	 * @return WebDriver after successfully opening specified tab
 	 * @throws Exception
-	 */
+	 */ 
 	public static WebDriver openTab(String tabName,WebDriver driver) throws Exception {		
 		try { 
 			switch (FrameworkConstants.IS_PLATFORM) {

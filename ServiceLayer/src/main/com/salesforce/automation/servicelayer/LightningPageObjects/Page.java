@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.salesforce.automation.servicelayer.config.FrameworkConstants;
-
 import java.net.MalformedURLException;
 
 /**
@@ -31,7 +29,7 @@ public class Page {
     private static WebElement HomeOpenAnyTab;
     
     @FindBy(xpath = "//a[@title='Details' and @class='tabHeader']")
-    private static WebElement OpenDetailPage;
+    private static WebElement OpenDetailTab;
     
     public Page(WebDriver driver) {
         this.driver = driver;
@@ -71,16 +69,7 @@ public class Page {
     	return driver.findElement(By.xpath(strXpathLocator));
     }
     
-    public Page openUserPage(WebDriver driver, String testUserId) {
-    	String appended_url = (FrameworkConstants.IS_BASE_URL.replace("@recordId", testUserId));
-    	appended_url = driver.getCurrentUrl().replace("/one/one.app#/home", appended_url);
-    	driver.get(appended_url);
-    	Page page = PageFactory.initElements(driver, Page.class);
-    	page.setDriver(driver);
-    	return page;
-    }
-    
-    public WebElement openAccountDetailPage() {
-    	return OpenDetailPage;
-    }
+    public WebElement openDetailTab() {
+    	return OpenDetailTab;
+    } 
 }

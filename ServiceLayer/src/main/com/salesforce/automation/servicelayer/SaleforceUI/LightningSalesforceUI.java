@@ -3,6 +3,7 @@ package com.salesforce.automation.servicelayer.SaleforceUI;
 import org.openqa.selenium.WebDriver;
 
 import com.salesforce.automation.servicelayer.LightningPageObjects.Page;
+import com.salesforce.automation.servicelayer.LightningPageObjects.User;
 import com.salesforce.automation.servicelayer.utils.UIUtilities;
 
 public class LightningSalesforceUI {
@@ -39,13 +40,13 @@ public class LightningSalesforceUI {
 	 * @throws Exception
 	 */
 	public static void openDetailPage(String testUserId,WebDriver driver) throws Exception{
-		try{
+		try{ 
 			UIUtilities.SwitchToLightningView(driver);
-			Page page = Page.init(driver);
 			Thread.sleep(8000);
-			page = page.openUserPage(driver, testUserId);
+			User user = User.init(driver);
+			user = User.openUserPage(driver, testUserId);
 			Thread.sleep(8000);
-			page.openAccountDetailPage().click();
+			user.openDetailTab().click();
 			Thread.sleep(8000);
 		}catch (Exception e) {
 			e.printStackTrace();

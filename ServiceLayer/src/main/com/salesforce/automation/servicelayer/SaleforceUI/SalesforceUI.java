@@ -29,4 +29,28 @@ public class SalesforceUI {
 			throw e;
 		}
 	}
+	
+	/**
+	 * @author ishriwastava
+	 * @param testObjectId -> Id of the object
+	 * @param driver -> -> Webdriver for that instance
+	 * This method opens objects in Edit view on either classic
+	 * or lightning based on user choice
+	 * @return WebDriver after successfully opening specified object in Edit mode
+	 * @throws Exception
+	 */
+	public static WebDriver openEditPage(String testObjectId,WebDriver driver) throws Exception {		
+		try { 
+			switch (FrameworkConstants.IS_PLATFORM) {
+			case "lightning" : 	LightningSalesforceUI.openEditPage(testObjectId, driver);
+								break;
+			case "classic" : 	ClassicSalesforceUI.openEditPage(testObjectId, driver);
+								break;
+			}
+			return driver;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
 }

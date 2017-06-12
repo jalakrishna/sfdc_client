@@ -31,4 +31,27 @@ public class ClassicSalesforceUI {
 		}
 	}
 	
+	
+	/** 
+	 * @author ishriwastava
+	 * @param tabName -> Name of item to search for 
+	 * @param driver -> Webdriver for that instance    
+	 * This method clicks on App Launcher icon in tabs and will open a specified tab.
+	 * @throws Exception
+	 */
+	public static void openEditPage(String testObjectId,WebDriver driver) throws Exception{
+		try{
+			UIUtilities.SwitchToClassicView(driver);
+			String url = testObjectId + "?noredirect=1";
+			Page object = Page.openObjectPage(driver, url);
+            Thread.sleep(10000);          
+            System.out.println("Click on Edit button");
+            object.getObjectEdit().click();            
+            } 
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
 }

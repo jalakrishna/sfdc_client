@@ -63,4 +63,12 @@ public class HomePage {
 			return homeOpenAnyTab;
 		}
 	    
+	    public HomePage openUserAccountPage(WebDriver driver, String testUserId) {
+	    	String appended_url = driver.getCurrentUrl().replace("home/home.jsp", testUserId);
+	    	driver.get(appended_url);
+	    	HomePage home = PageFactory.initElements(driver, HomePage.class);
+	    	home.setDriver(driver);
+	    	return home;
+	    }
+	    
 }

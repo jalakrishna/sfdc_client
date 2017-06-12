@@ -31,4 +31,24 @@ public class ClassicSalesforceUI {
 		}
 	}
 	
+	/** 
+	 * @author trungta
+	 * @param testUserId => User id to whom you want to view detail page 
+	 * @param driver -> Webdriver for that instance    
+	 * This method opens the detail page for the specified user
+	 * @throws Exception
+	 */
+	public static void openDetailPage(String testUserId,WebDriver driver) throws Exception{
+		try{
+			UIUtilities.SwitchToClassicView(driver);
+			HomePage homePage = HomePage.init(driver);
+			Thread.sleep(8000);
+			homePage = homePage.openUserAccountPage(driver, testUserId);
+			Thread.sleep(8000);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
 }

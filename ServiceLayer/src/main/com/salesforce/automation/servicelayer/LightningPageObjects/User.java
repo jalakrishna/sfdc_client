@@ -1,6 +1,7 @@
 package com.salesforce.automation.servicelayer.LightningPageObjects;
 
 
+import com.salesforce.automation.servicelayer.ClassicPageObjects.Page;
 import com.salesforce.automation.servicelayer.utils.UrlUtilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,14 +28,18 @@ public class User extends Page{
     public User(WebDriver driver) {
         super(driver);
     }
-
     public static User openUserPage(WebDriver driver, String url) throws MalformedURLException {
         driver.get(UrlUtilities.getServerUrlIncludingProtocol(driver.getCurrentUrl()) + "/" + url);
         User user = PageFactory.initElements(driver, User.class);
         user.setDriver(driver);
         return user;
     }
-
+    
+    public static User init(WebDriver driver) throws MalformedURLException {
+    	User user = PageFactory.initElements(driver, User.class);
+    	user.setDriver(driver);
+        return user;
+    }
     public WebElement getUserDetail() {
         return userDetail;
     }

@@ -2,7 +2,7 @@ package com.salesforce.automation.servicelayer.SaleforceUI;
 
 import org.openqa.selenium.WebDriver;
 
-import com.salesforce.automation.servicelayer.LightningPageObjects.HomePage;
+import com.salesforce.automation.servicelayer.LightningPageObjects.Page;
 import com.salesforce.automation.servicelayer.utils.UIUtilities;
 
 public class LightningSalesforceUI {
@@ -17,13 +17,13 @@ public class LightningSalesforceUI {
 	public static void openTab(String tabName,WebDriver driver) throws Exception{
 		try{
 			UIUtilities.SwitchToLightningView(driver);
-			HomePage homePage = HomePage.init(driver);
+			Page page = Page.init(driver);
 			Thread.sleep(8000);
-			homePage.getAppLauncher().click();
+			page.getAppLauncher().click();
 			Thread.sleep(8000);
-			homePage.setHomeOpenAnyTab().sendKeys(tabName);
+			page.setHomeOpenAnyTab().sendKeys(tabName);
 			Thread.sleep(8000);
-			homePage.getSearchItem(tabName).click();
+			page.getSearchItem(tabName).click();
 			Thread.sleep(8000);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -41,11 +41,11 @@ public class LightningSalesforceUI {
 	public static void openDetailPage(String testUserId,WebDriver driver) throws Exception{
 		try{
 			UIUtilities.SwitchToLightningView(driver);
-			HomePage homePage = HomePage.init(driver);
+			Page page = Page.init(driver);
 			Thread.sleep(8000);
-			homePage = homePage.openUserAccountPage(driver, testUserId);
+			page = page.openUserPage(driver, testUserId);
 			Thread.sleep(8000);
-			homePage.openAccountDetailPage().click();
+			page.openAccountDetailPage().click();
 			Thread.sleep(8000);
 		}catch (Exception e) {
 			e.printStackTrace();

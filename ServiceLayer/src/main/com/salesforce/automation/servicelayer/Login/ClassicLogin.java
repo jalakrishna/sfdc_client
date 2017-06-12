@@ -1,6 +1,6 @@
 package com.salesforce.automation.servicelayer.Login;
 
-import com.salesforce.automation.servicelayer.ClassicPageObjects.Home;
+import com.salesforce.automation.servicelayer.ClassicPageObjects.Page;
 import com.salesforce.automation.servicelayer.Exception.NonSupportedPlatformException;
 import com.salesforce.automation.servicelayer.utils.UIUtilities;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +26,7 @@ public class ClassicLogin {
         try{
             UIUtilities.SwitchToClassicView(driver);
             String url = testUserId + "?noredirect=1";
-            Home home = Home.openUserPage(driver, url);
+            Page home = Page.openPage(driver, url);
             Thread.sleep(5000);
             System.out.println("Click on Login button");
             home.getHomeLogin().click();
@@ -34,7 +34,6 @@ public class ClassicLogin {
             UIUtilities.SwitchToClassicView(driver);
             return driver;
         }catch(Exception e){
-     //       Log.writeLog("Error while login as test user","info");
             e.printStackTrace();
             throw e;
         }

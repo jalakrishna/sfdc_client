@@ -26,12 +26,15 @@ public class Page  {
 
     @FindBy(linkText = "Switch to Lightning Experience")
     private WebElement SwitchToLightningViewLink;
-
-    @FindBy(xpath = HOME_OPEN_ANY_TAB)
-	private WebElement homeOpenAnyTab;
+    
+    @FindBy(linkText = "Log Out")
+    private WebElement ClassicPageLogoutOption;
     
     @FindBy(xpath = "//input[contains(@title,'Edit')]")
 	private WebElement edit;
+
+    @FindBy(xpath = HOME_OPEN_ANY_TAB)
+	private WebElement homeOpenAnyTab;
 
     @FindBy(xpath = "//a[img[contains(@src,'s.gif') and @class='allTabsArrow' and @title='All Tabs']]")
 	private WebElement homeAllTabs;
@@ -75,6 +78,10 @@ public class Page  {
     public WebElement getHomeAllTabs() {
 		return homeAllTabs;
 	}
+
+    public WebElement getClassicPageLogoutOption() {
+        return ClassicPageLogoutOption;
+    }
     
     public WebElement getObjectEdit() {
 		return edit;

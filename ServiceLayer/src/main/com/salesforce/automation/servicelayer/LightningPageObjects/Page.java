@@ -42,6 +42,9 @@ public class Page {
     @FindBy(xpath = "//a[@title='Details' and @class='tabHeader']")
     private static WebElement OpenDetailTab;
     
+    @FindBy(linkText = "Logout")
+    private WebElement LightningPageLogoutOption;
+    
     public Page(WebDriver driver) {
         this.driver = driver;
     }
@@ -58,15 +61,18 @@ public class Page {
         page.setDriver(driver);
         return page;
     }
-    
+
     public static Page openPage(WebDriver driver, String url) throws MalformedURLException {
         driver.get(UrlUtilities.getServerUrlIncludingProtocol(driver.getCurrentUrl()) + "/" + url);
         Page object = PageFactory.initElements(driver, Page.class);
         object.setDriver(driver);
         return object;
     }
-
-
+  
+    public WebElement getLightningPageLogoutOption() {
+        return LightningPageLogoutOption;
+    }
+    
     public WebElement getUserIcon() {
         return UserIcon;
     }
@@ -103,5 +109,4 @@ public class Page {
     public WebElement openDetailTab() {
     	return OpenDetailTab;
     } 
-
 }

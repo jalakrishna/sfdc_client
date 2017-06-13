@@ -38,4 +38,24 @@ public class ClassicLogin {
             throw e;
         }
     }
+    
+    
+	/**
+	 * This Method logout from salesforce for the user
+	 * @param driver => WebDriver for that instance
+	 * @throws Exception
+	 */
+	public static void LogoutAsTestUser(WebDriver driver) throws Exception {
+		try {
+			com.salesforce.automation.servicelayer.ClassicPageObjects.Page page = com.salesforce.automation.servicelayer.ClassicPageObjects.Page.init(driver);
+			page.getUserName().click();
+			Thread.sleep(3000);
+			page.getClassicPageLogoutOption().click();
+
+		} catch (Exception e) {
+			//Log.writeLog("Error while logout as test user","info");
+			e.printStackTrace();
+			throw e;
+		}
+	}
 }

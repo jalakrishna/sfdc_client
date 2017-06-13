@@ -46,7 +46,7 @@ public class ClassicLogin {
 	 * @throws Exception
 	 */
 	public static void LogoutAsTestUser(WebDriver driver) throws Exception {
-		Page page = new Page(driver);
+		Page page = Page.init(driver);
 		try {
 			page.getUserName().click();
 			Thread.sleep(3000);

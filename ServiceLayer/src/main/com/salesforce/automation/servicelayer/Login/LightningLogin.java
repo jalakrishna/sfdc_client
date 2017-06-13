@@ -1,6 +1,7 @@
 package com.salesforce.automation.servicelayer.Login;
 
 import com.salesforce.automation.servicelayer.Exception.NonSupportedPlatformException;
+import com.salesforce.automation.servicelayer.LightningPageObjects.Page;
 import com.salesforce.automation.servicelayer.LightningPageObjects.User;
 import com.salesforce.automation.servicelayer.utils.UIUtilities;
 import org.openqa.selenium.WebDriver;
@@ -52,8 +53,8 @@ public class LightningLogin {
 	 * @throws Exception
 	 */
 	public static void LogoutAsTestUser(WebDriver driver) throws Exception {
+		Page page = new Page(driver);
 		try {
-			com.salesforce.automation.servicelayer.LightningPageObjects.Page page = com.salesforce.automation.servicelayer.LightningPageObjects.Page.init(driver);
 			page.getUserIcon().click();
 			Thread.sleep(3000);
 			page.getLightningPageLogoutOption().click();

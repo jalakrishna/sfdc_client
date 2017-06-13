@@ -46,8 +46,8 @@ public class ClassicLogin {
 	 * @throws Exception
 	 */
 	public static void LogoutAsTestUser(WebDriver driver) throws Exception {
+		Page page = new Page(driver);
 		try {
-			com.salesforce.automation.servicelayer.ClassicPageObjects.Page page = com.salesforce.automation.servicelayer.ClassicPageObjects.Page.init(driver);
 			page.getUserName().click();
 			Thread.sleep(3000);
 			page.getClassicPageLogoutOption().click();

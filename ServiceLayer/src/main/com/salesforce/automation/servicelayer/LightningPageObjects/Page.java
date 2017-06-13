@@ -31,6 +31,9 @@ public class Page {
     @FindBy(xpath = "//a[@title='Details' and @class='tabHeader']")
     private static WebElement OpenDetailTab;
     
+    @FindBy(linkText = "Logout")
+    private WebElement LightningPageLogoutOption;
+    
     public Page(WebDriver driver) {
         this.driver = driver;
     }
@@ -62,6 +65,10 @@ public class Page {
     
     public WebElement setHomeOpenAnyTab() {
     	return HomeOpenAnyTab;
+    }
+    
+    public WebElement getLightningPageLogoutOption() {
+        return LightningPageLogoutOption;
     }
     
     public WebElement getSearchItem(String tabName) {

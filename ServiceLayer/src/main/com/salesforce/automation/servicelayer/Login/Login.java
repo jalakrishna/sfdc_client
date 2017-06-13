@@ -64,5 +64,34 @@ public class Login extends Base{
         }
         return driver;
     }
+    
+	/**
+	 * This Method is used to logout from Lightning/Classic salesforce for selected user
+     * @throws Exception
+	 */
+	public void LogoutAsTestUser(WebDriver driver) throws Exception {
+
+		
+		try {
+			if(null != driver){
+				switch(FrameworkConstants.IS_PLATFORM){
+				case "classic": 
+						ClassicLogin.LogoutAsTestUser(driver);
+					break;
+					
+				case "lightning":
+					LightningLogin.LogoutAsTestUser(driver);
+				
+					break;
+				}
+			}
+			
+
+		} catch (Exception e) {
+			System.out.println("Error while logout as test user");
+			e.printStackTrace();
+			throw e;
+		}
+	}
 
 }

@@ -45,4 +45,23 @@ public class LightningLogin {
             throw e;
         }
     }
+    
+    /**
+	 * This Method is used to logout from lightning salesforce for the user
+	 * @param driver => WebDriver for that instance
+	 * @throws Exception
+	 */
+	public static void LogoutAsTestUser(WebDriver driver) throws Exception {
+		try {
+			com.salesforce.automation.servicelayer.LightningPageObjects.Page page = com.salesforce.automation.servicelayer.LightningPageObjects.Page.init(driver);
+			page.getUserIcon().click();
+			Thread.sleep(3000);
+			page.getLightningPageLogoutOption().click();
+
+		} catch (Exception e) {
+			//Log.writeLog("Error while logout as test user","info");
+			e.printStackTrace();
+			throw e;
+		}
+	}
 }

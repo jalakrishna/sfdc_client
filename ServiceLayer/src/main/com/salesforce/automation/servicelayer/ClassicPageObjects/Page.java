@@ -26,6 +26,9 @@ public class Page  {
 
     @FindBy(linkText = "Switch to Lightning Experience")
     private WebElement SwitchToLightningViewLink;
+    
+    @FindBy(linkText = "Log Out")
+    private WebElement ClassicPageLogoutOption;
 
     @FindBy(xpath = HOME_OPEN_ANY_TAB)
 	private WebElement homeOpenAnyTab;
@@ -72,10 +75,16 @@ public class Page  {
     public WebElement getHomeAllTabs() {
 		return homeAllTabs;
 	}
+
+    public WebElement getClassicPageLogoutOption() {
+        return ClassicPageLogoutOption;
+    }
     
     public WebElement getHomeOpenAnyTab(String tabName,WebDriver driver) {
 		String strXpathLocator = (HOME_OPEN_ANY_TAB.replace("@TABNAME", tabName));
 		homeOpenAnyTab = driver.findElement(By.xpath(strXpathLocator));
 		return homeOpenAnyTab;
     }
+    
+    
 }

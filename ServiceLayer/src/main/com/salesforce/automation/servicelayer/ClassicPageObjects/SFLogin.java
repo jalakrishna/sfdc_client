@@ -22,7 +22,7 @@ public class SFLogin extends Page{
 
     public SFLogin(WebDriver driver) {
         super(driver);
-    }
+    }  
 
     public static SFLogin init(WebDriver driver) {
         SFLogin sfLogin = PageFactory.initElements(driver, SFLogin.class);

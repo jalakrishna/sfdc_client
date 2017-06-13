@@ -1,7 +1,6 @@
 package com.salesforce.automation.servicelayer.SaleforceUI;
 
 import org.openqa.selenium.WebDriver;
-
 import com.salesforce.automation.servicelayer.ClassicPageObjects.Page;
 import com.salesforce.automation.servicelayer.utils.UIUtilities;
 
@@ -29,20 +28,47 @@ public class ClassicSalesforceUI {
 			throw e;
 		}
 	}
-	
+		
+ 
 	/** 
 	 * @author trungta
-	 * @param testUserId => User id to whom you want to view detail page 
+	 * @param testObjectId => Object ID  
 	 * @param driver -> Webdriver for that instance    
-	 * This method opens the detail page for the specified user
+	 * This method opens the detail page of the specified object in classic view
 	 * @throws Exception
 	 */
-	public static void openDetailPage(String testUserId,WebDriver driver) throws Exception{
+	public static void openDetailPage(String testObjectId,WebDriver driver) throws Exception{
 		try{ 
 			UIUtilities.SwitchToClassicView(driver);
 			Thread.sleep(8000);
-			Page.openPage(driver, testUserId);
+			Page page = Page.init(driver);
+			Page.openPage(driver, testObjectId);
 			Thread.sleep(8000);
+			page.getObjectEdit().click();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	/** 
+	 * @author ishriwastava
+	 * @param testObjectId => Object ID  
+	 * @param driver -> Webdriver for that instance    
+	 * This method opens the edit page of the specified object in classic view
+	 * @throws Exception
+	 */
+	public static void openEditPage(String testObjectId,WebDriver driver) throws Exception{
+		try{
+			UIUtilities.SwitchToClassicView(driver);
+			Thread.sleep(10000);
+			Page page = Page.init(driver);
+			Page.openPage(driver, testObjectId);    
+			Thread.sleep(10000);
+            System.out.println("Click on Edit button");
+            page.getObjectEdit().click(); 
+            Thread.sleep(8000);
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw e;

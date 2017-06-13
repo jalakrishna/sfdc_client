@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.salesforce.automation.servicelayer.utils.UrlUtilities;
+
 import java.net.MalformedURLException;
 
 /**
@@ -21,7 +23,16 @@ public class Page {
 
     @FindBy(linkText = "Switch to Salesforce Classic")
     private WebElement SwitchToClassicViewLink;
-
+      
+    @FindBy(xpath = "//a[contains(@title,'Edit')and @class='forceActionLink']")
+    private WebElement edit;
+    
+    @FindBy(xpath = "//a[contains(@title,'Show more actions for this record')]")
+    private WebElement showMoreAction;
+    
+    @FindBy(xpath = "//a[contains(@title,'Edit')]")
+    private WebElement dropdownEdit;
+    
     @FindBy(xpath = "//span[text() = 'App Launcher' and @class = 'slds-assistive-text']/parent::div/parent::button")
     private static WebElement AppLauncher;
     
@@ -51,6 +62,17 @@ public class Page {
         return page;
     }
 
+    public static Page openPage(WebDriver driver, String url) throws MalformedURLException {
+        driver.get(UrlUtilities.getServerUrlIncludingProtocol(driver.getCurrentUrl()) + "/" + url);
+        Page object = PageFactory.initElements(driver, Page.class);
+        object.setDriver(driver);
+        return object;
+    }
+  
+    public WebElement getLightningPageLogoutOption() {
+        return LightningPageLogoutOption;
+    }
+    
     public WebElement getUserIcon() {
         return UserIcon;
     }
@@ -58,17 +80,25 @@ public class Page {
     public WebElement getSwitchToClassicViewLink() {
         return SwitchToClassicViewLink;
     }
+       
+    public WebElement getObjectEdit() {
+        return edit;
+    }
+   
+    public WebElement getshowMoreAction() {
+        return showMoreAction;
+    }
     
+    public WebElement getDropdownEdit() {
+        return dropdownEdit;
+    }
+
     public WebElement getAppLauncher() {
     	return AppLauncher;
     }
     
     public WebElement setHomeOpenAnyTab() {
     	return HomeOpenAnyTab;
-    }
-    
-    public WebElement getLightningPageLogoutOption() {
-        return LightningPageLogoutOption;
     }
     
     public WebElement getSearchItem(String tabName) {

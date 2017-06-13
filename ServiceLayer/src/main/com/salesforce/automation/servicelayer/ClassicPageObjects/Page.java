@@ -29,6 +29,9 @@ public class Page  {
     
     @FindBy(linkText = "Log Out")
     private WebElement ClassicPageLogoutOption;
+    
+    @FindBy(xpath = "//input[contains(@title,'Edit')]")
+	private WebElement edit;
 
     @FindBy(xpath = HOME_OPEN_ANY_TAB)
 	private WebElement homeOpenAnyTab;
@@ -80,11 +83,13 @@ public class Page  {
         return ClassicPageLogoutOption;
     }
     
+    public WebElement getObjectEdit() {
+		return edit;
+	}
+    
     public WebElement getHomeOpenAnyTab(String tabName,WebDriver driver) {
 		String strXpathLocator = (HOME_OPEN_ANY_TAB.replace("@TABNAME", tabName));
 		homeOpenAnyTab = driver.findElement(By.xpath(strXpathLocator));
 		return homeOpenAnyTab;
     }
-    
-    
 }

@@ -28,11 +28,6 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>com.salesforce.cfl-automation-kumonium</groupId>
-            <artifactId>cfl-automation-kumonium</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-        <dependency>
             <groupId>com.sforce.cd.kumonium</groupId>
             <artifactId>KumoniumModules</artifactId>
             <version>2.1.0</version>

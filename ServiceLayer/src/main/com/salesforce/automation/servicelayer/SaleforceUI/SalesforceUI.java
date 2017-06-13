@@ -62,12 +62,12 @@ public class SalesforceUI {
 	 * @return WebDriver after successfully opening detail page for specified user
 	 * @throws Exception*/
 	 
-	public static WebDriver openDetailPage(String testUserId,WebDriver driver) throws Exception {		
+	public static WebDriver openDetailPage(String testObjectId,WebDriver driver) throws Exception {		
 		try { 
 			switch (FrameworkConstants.IS_PLATFORM) {
-			case "lightning" : 	LightningSalesforceUI.openDetailPage(testUserId, driver);
+			case "lightning" : 	LightningSalesforceUI.openDetailPage(testObjectId, driver);
 								break;
-			case "classic" : 	ClassicSalesforceUI.openDetailPage(testUserId, driver);
+			case "classic" : 	ClassicSalesforceUI.openDetailPage(testObjectId, driver);
 
 								break;
 			}

@@ -24,7 +24,7 @@ public class Page {
     @FindBy(linkText = "Switch to Salesforce Classic")
     private WebElement SwitchToClassicViewLink;
       
-    @FindBy(xpath = "//div[contains(@title,'Edit')]")
+    @FindBy(xpath = "//a[contains(@title,'Edit')and @class='forceActionLink']")
     private WebElement edit;
     
     @FindBy(xpath = "//a[contains(@title,'Show more actions for this record')]")
@@ -33,7 +33,6 @@ public class Page {
     @FindBy(xpath = "//a[contains(@title,'Edit')]")
     private WebElement dropdownEdit;
     
-
     @FindBy(xpath = "//span[text() = 'App Launcher' and @class = 'slds-assistive-text']/parent::div/parent::button")
     private static WebElement AppLauncher;
     
@@ -60,7 +59,7 @@ public class Page {
         return page;
     }
     
-    public static Page openObjectPage(WebDriver driver, String url) throws MalformedURLException {
+    public static Page openPage(WebDriver driver, String url) throws MalformedURLException {
         driver.get(UrlUtilities.getServerUrlIncludingProtocol(driver.getCurrentUrl()) + "/" + url);
         Page object = PageFactory.initElements(driver, Page.class);
         object.setDriver(driver);

@@ -1,8 +1,9 @@
 package com.salesforce.automation.servicelayer.SaleforceUI;
 
+import com.salesforce.automation.servicelayer.Exception.ConfigException;
 import org.openqa.selenium.WebDriver;
 
-import com.salesforce.automation.servicelayer.config.FrameworkConstants;
+import com.salesforce.automation.servicelayer.config.FrameworkConfig;
 
 public class SalesforceUI {
 	
@@ -16,12 +17,18 @@ public class SalesforceUI {
 	 * @throws Exception
 	 */ 
 	public static WebDriver openTab(String tabName,WebDriver driver) throws Exception {		
-		try { 
-			switch (FrameworkConstants.IS_PLATFORM) {
-			case "lightning" : 	LightningSalesforceUI.openTab(tabName, driver);
-								break;
-			case "classic" : 	ClassicSalesforceUI.openTab(tabName, driver);
-								break;
+		try {
+			if (FrameworkConfig.getConfigMap().containsKey("IS_PLATFORM")) {
+				switch (FrameworkConfig.getConfigMap().get("IS_PLATFORM")) {
+					case "lightning":
+						LightningSalesforceUI.openTab(tabName, driver);
+						break;
+					case "classic":
+						ClassicSalesforceUI.openTab(tabName, driver);
+						break;
+				}
+			}else {
+				throw new ConfigException();
 			}
 			return driver;
 		} catch (Exception e) {
@@ -40,12 +47,18 @@ public class SalesforceUI {
 	 * @throws Exception
 	 */
 	public static WebDriver openEditPage(String testObjectId,WebDriver driver) throws Exception {		
-		try { 
-			switch (FrameworkConstants.IS_PLATFORM) {
-			case "lightning" : 	LightningSalesforceUI.openEditPage(testObjectId, driver);
-								break;
-			case "classic" : 	ClassicSalesforceUI.openEditPage(testObjectId, driver);
-								break;
+		try {
+			if (FrameworkConfig.getConfigMap().containsKey("IS_PLATFORM")) {
+				switch (FrameworkConfig.getConfigMap().get("IS_PLATFORM")) {
+					case "lightning":
+						LightningSalesforceUI.openEditPage(testObjectId, driver);
+						break;
+					case "classic":
+						ClassicSalesforceUI.openEditPage(testObjectId, driver);
+						break;
+				}
+			} else{
+				throw new ConfigException();
 			}
 			return driver;
 		} catch (Exception e) {
@@ -63,14 +76,20 @@ public class SalesforceUI {
 	 * @throws Exception*/
 	 
 	public static WebDriver openDetailPage(String testObjectId,WebDriver driver) throws Exception {		
-		try { 
-			switch (FrameworkConstants.IS_PLATFORM) {
-			case "lightning" : 	LightningSalesforceUI.openDetailPage(testObjectId, driver);
-								break;
-			case "classic" : 	ClassicSalesforceUI.openDetailPage(testObjectId, driver);
+		try {
+			if (FrameworkConfig.getConfigMap().containsKey("IS_PLATFORM")) {
+				switch (FrameworkConfig.getConfigMap().get("IS_PLATFORM")) {
+					case "lightning":
+						LightningSalesforceUI.openDetailPage(testObjectId, driver);
+						break;
+					case "classic":
+						ClassicSalesforceUI.openDetailPage(testObjectId, driver);
 
-								break;
-			}
+						break;
+				}
+			}else{
+					throw new ConfigException();
+				}
 			return driver;
 		} catch (Exception e) {
 			e.printStackTrace();

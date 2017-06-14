@@ -1,9 +1,10 @@
 package com.salesforce.automation.servicelayer.Login;
 
 import com.salesforce.automation.servicelayer.Base.Base;
+import com.salesforce.automation.servicelayer.Exception.ConfigException;
 import com.salesforce.automation.servicelayer.Exception.DriverNotFoundException;
 import com.salesforce.automation.servicelayer.ClassicPageObjects.SFLogin;
-import com.salesforce.automation.servicelayer.config.FrameworkConstants;
+import com.salesforce.automation.servicelayer.config.FrameworkConfig;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -11,7 +12,7 @@ import org.openqa.selenium.WebDriver;
  * Created by rtigulla on 6/8/17.
  */
 public class Login extends Base{
-    private static final String loginUrl = FrameworkConstants.UI_TEST_URL;
+    private static final String loginUrl = FrameworkConfig.UI_TEST_URL;
 
     /**
      * The method is used to login to platform
@@ -19,7 +20,7 @@ public class Login extends Base{
      * @throws InterruptedException
      * @throws DriverNotFoundException
      */
-    public static WebDriver Login() throws InterruptedException, DriverNotFoundException {
+    public static WebDriver Login() throws InterruptedException, DriverNotFoundException, ConfigException {
         WebDriver driver;
         try {
             driver = getNewInstanceofDriver();
@@ -30,10 +31,16 @@ public class Login extends Base{
                 System.out.println("Page title is: " + driver.getTitle());
                 System.out.println("Enter username");
                 SFLogin sfLogin = SFLogin.init(driver);
-                sfLogin.getUserName().sendKeys("");
+                if(FrameworkConfig.getConfigMap().containsKey("USERNAME"))
+                    sfLogin.getUserName().sendKeys(FrameworkConfig.getConfigMap().get("USERNAME"));
+                else
+                    throw new ConfigException();
                 Thread.sleep(4000);
                 System.out.println("Enter password");
-                sfLogin.getPassword().sendKeys("");
+                if(FrameworkConfig.getConfigMap().containsKey("PASSWORD"))
+                    sfLogin.getPassword().sendKeys(FrameworkConfig.getConfigMap().get("PASSWORD"));
+                else
+                    throw new ConfigException();
                 Thread.sleep(4000);
                 sfLogin.getLoginBtn().click();
                 Thread.sleep(4000);
@@ -52,12 +59,18 @@ public class Login extends Base{
     public static WebDriver LoginAsTestUser(WebDriver driver, String userId){
         try{
             if (null != driver){
-                switch (FrameworkConstants.IS_PLATFORM){
-                    case "classic": ClassicLogin.LoginAsSpecifcUser(driver,userId);
-                                    break;
-                    case "lightning": LightningLogin.LoginAsSpecifcUser(driver,userId);
-                                    break;
-                }
+                 if (FrameworkConfig.getConfigMap().containsKey("IS_PLATFORM")) {
+                     switch (FrameworkConfig.getConfigMap().get("IS_PLATFORM")) {
+                         case "classic":
+                             ClassicLogin.LoginAsSpecifcUser(driver, userId);
+                             break;
+                         case "lightning":
+                             LightningLogin.LoginAsSpecifcUser(driver, userId);
+                             break;
+                     }
+                 }else{
+                     throw new ConfigException();
+                 }
             }
         }catch (Exception ex){
 
@@ -72,12 +85,18 @@ public class Login extends Base{
 	public static void LogoutAsTestUser(WebDriver driver) throws Exception {		
 		try {
 			if(null != driver){
-				switch(FrameworkConstants.IS_PLATFORM){
-				case "classic": ClassicLogin.LogoutAsTestUser(driver);
-					break;
-				case "lightning":LightningLogin.LogoutAsTestUser(driver);
-					break;
-				}
+                if (FrameworkConfig.getConfigMap().containsKey("IS_PLATFORM")) {
+                    switch (FrameworkConfig.getConfigMap().get("IS_PLATFORM")) {
+                        case "classic":
+                            ClassicLogin.LogoutAsTestUser(driver);
+                            break;
+                        case "lightning":
+                            LightningLogin.LogoutAsTestUser(driver);
+                            break;
+                    }
+                }else{
+                    throw new ConfigException();
+                }
 			}
 			
 		} catch (Exception e) {

@@ -12,7 +12,7 @@ public class FrameworkConfig {
     private static Hashtable<String,String> ConfigMap;
 
     public static Hashtable<String,String> getConfigMap(){
-        if(null != ConfigMap){
+        if(null == ConfigMap){
             ConfigMap =  new Hashtable<String,String>();
         }
         return  ConfigMap;
